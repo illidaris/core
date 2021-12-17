@@ -1,5 +1,7 @@
 package core
 
+import "context"
+
 type MetaData string
 
 const (
@@ -26,4 +28,24 @@ const (
 
 func (key MetaData) String() string {
 	return string(key)
+}
+
+func (key MetaData) CtxGet(ctx context.Context) interface{} {
+	return ctx.Value(key)
+}
+
+func (key MetaData) CtxSet(ctx context.Context, v interface{}) context.Context {
+	return context.WithValue(ctx, key, v)
+}
+
+func (key MetaData) CtxGetString(ctx context.Context) string {
+	v := key.CtxGet(ctx)
+	if str, ok := v.(string); ok {
+		return str
+	}
+	return ""
+}
+
+func (key MetaData) CtxSetString(ctx context.Context, v string) context.Context {
+	return key.CtxSet(ctx, v)
 }
