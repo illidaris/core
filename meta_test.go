@@ -6,26 +6,26 @@ import (
 )
 
 func TestMetaData(t *testing.T) {
-	const right = "TraceId"
+	const right = "traceId"
 	if TraceID.String() != right {
 		t.Errorf(TraceID.String())
 	}
 }
 
-func TestMetaData_CtxGet(t *testing.T) {
+func TestMetaData_Get(t *testing.T) {
 	const v = "123456aaa"
 	ctx := context.Background()
-	ctx = TraceID.CtxSet(ctx, v)
-	if res := TraceID.CtxGet(ctx); res != v {
+	ctx = TraceID.Set(ctx, v)
+	if res := TraceID.Get(ctx); res != v {
 		t.Errorf("%s!=%s", res, v)
 	}
 }
 
-func TestMetaData_CtxGetString(t *testing.T) {
+func TestMetaData_GetString(t *testing.T) {
 	const v = "123456aaa"
 	ctx := context.Background()
-	ctx = TraceID.CtxSetString(ctx, v)
-	if res := TraceID.CtxGetString(ctx); res != v {
+	ctx = TraceID.SetString(ctx, v)
+	if res := TraceID.GetString(ctx); res != v {
 		t.Errorf("%s!=%s", res, v)
 	}
 }
