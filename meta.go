@@ -6,11 +6,14 @@ type MetaData string
 
 const (
 	TraceID      MetaData = "traceId"      // distributed trace, link system
+	ParentID     MetaData = "parentId"     // parent id
 	SessionID    MetaData = "sessionId"    // app trace, link function
 	SessionBirth MetaData = "sessionBirth" // session birth
+	SpanID       MetaData = "spanId"       // span id
 
 	Action MetaData = "action"
 	Step   MetaData = "step"
+	XKey   MetaData = "x_key" // x_key keyword for business search
 
 	Error    MetaData = "error"
 	Duration MetaData = "duration"
